@@ -1,0 +1,26 @@
+This is a barebones kernel inspired by the OSdev wiki designed to
+be a good starting point for kernel tinkering on 9front. There
+are no requirments for compiling and creating the cdrom iso
+outside of standard 9front utilities.
+
+The content of the repo are:
+	- l.s: 			Assembly bootstrap to move to long mode. This is copied from the 9front 9pc64 kernel.
+	- kern.c: 		Kernel C source code.
+	- 9bootproto:	Proto file for creating the cdrom iso.
+	- mem.h:		Handful of #define's used for l.s, also copied from 9front 9pc64 kernel.
+	- plan9.ini:	9boot configuration file for loading the kernel.
+
+
+l.s and mem.h are vendored to get us into long mode and for setting the kernel up
+to be multiboot compliant. It is worth noting that while being multiboot compliant,
+our kernel still uses the a.out binary format, meaning qemu will not be able to load
+it with the '-kernel' option. The iso includes the '9boot' bootloader for initial
+startup and moving to 32bit protected mode.
+
+
+compiling:
+	; mk 
+
+building an iso:
+	; mk kern.iso
+
