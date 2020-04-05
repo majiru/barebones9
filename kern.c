@@ -1,7 +1,6 @@
 #include <u.h>
 #include "mem.h"
 
-
 enum {
 	VGA_COLOR_BLACK = 0,
 	VGA_COLOR_BLUE = 1,
@@ -20,7 +19,6 @@ enum {
 	VGA_COLOR_LIGHT_BROWN = 14,
 	VGA_COLOR_WHITE = 15,
 };
-
 
 u32int MemMin;
 u16int *terminal;
@@ -53,13 +51,12 @@ main(void)
 	char msg[] = "Barebones kernel from Plan9 space!";
 	terminal = (u16int*) 0xB8000;
 
-	color = mkcolor(7, 0);
+	color = mkcolor(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK);
 	/* Clear the screen */
 	for(i=0;i<25*80;i++)
 		*(terminal+i) = mkchar(' ', color);
 
 	/* Print to the screen */
-	color = mkcolor(7, 0);
 	writestr(msg, sizeof msg-1, color);
 
 	/* Throw her in park */
