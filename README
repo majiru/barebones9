@@ -12,9 +12,7 @@ The content of the repo are:
 
 
 l.s and mem.h are vendored to get us into long mode and for setting the kernel up
-to be multiboot compliant. It is worth noting that while being multiboot compliant,
-our kernel still uses the a.out binary format, meaning qemu will not be able to load
-it with the '-kernel' option. The iso includes the '9boot' bootloader for initial
+to be multiboot compliant. The iso includes the '9boot' bootloader for initial
 startup and moving to 32bit protected mode.
 
 
