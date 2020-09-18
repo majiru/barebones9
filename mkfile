@@ -8,7 +8,7 @@ OBJ=\
 	kern.$O\
 
 kern:	$OBJ
-	$LD -o $target -T$KTZERO -l $prereq
+	$LD -o $target -T$KTZERO -R4096 -l $prereq
 
 kern.$O:	kern.c
 	$CC $CFLAGS kern.c
